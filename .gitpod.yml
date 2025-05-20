@@ -1,0 +1,28 @@
+# .gitpod.yml
+image: gitpod/workspace-python-3.9 #atau versi python yang dinginkan
+
+tasks:
+    - name: Install Depedencies & Setup
+      init: |
+        echo "Menginstall depedensi..."
+        pip install --upgrade pip
+        pip install -r requirements.txt
+        echo "Setup selesai. Anda bisa menjalankan 'python app.py'utk menguji UI Gradio (tanpa GPU, proses SD akan sangat lambat atau gagal)."
+      command: |
+        echo "Workspace Gitpod siap. Buka app.py utk mulai mengedit."
+        # Perintah utk login ke Hugging Face CLI jika token sudah diset sebagai env var di Gitpod
+        # if [ ! -z "$HF_TOKEN_GITPOD" ]; then # Gunakan nama env var yang berbeda utk Gitpod
+        # huggingface-cli login --token $HF_TOKEN_GITPOD
+        # echo "Login Hugging Face CLI berhasil di Gitpod."
+        # fi
+        
+ports:
+    - port: 7860 #port default Gradio
+      onOpen: open-preview #Otomatis buka preview saat port aktif
+      visibility: public #agar bisa diakses dari browser
+
+vscode:
+    extensions:
+        - ms-python.python #ekstensi Python esensial
+        - ms-toolsai.jupyter #jika ingin menggunakan jupyternotebook
+        - Gruntfuggly.todo-tree #berguna utk TODO
