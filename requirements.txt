@@ -1,0 +1,9 @@
+torch
+torchvision
+torchaudio
+diffusers>=0.20.0
+transformers
+accelerate
+Pillow
+gradio>=3.0
+safetensors
